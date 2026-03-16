@@ -178,7 +178,7 @@ export default function HomePage() {
                       <div 
                         className={`absolute top-3 right-3 lg:top-4 lg:right-4 ${dept.bg} ${dept.color} w-10 h-10 lg:w-12 lg:h-12 rounded-xl lg:rounded-2xl flex items-center justify-center shadow-xl backdrop-blur-md border border-white/20 z-20 transition-all group-hover:scale-110`}
                       >
-                        {React.cloneElement(dept.icon as React.ReactElement, { size: 20 })}
+                        {React.cloneElement(dept.icon as React.ReactElement<{ size: number }>, { size: 20 })}
                       </div>
                     </ScaleIn>
                   </div>

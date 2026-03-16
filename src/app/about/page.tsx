@@ -112,7 +112,7 @@ export default function AboutPage() {
                   className="group flex items-start space-x-4 lg:space-x-6 p-4 lg:p-6 rounded-[1.5rem] lg:rounded-[2rem] hover:bg-white hover:shadow-xl transition-all border border-transparent hover:border-sand-dark/20"
                 >
                   <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-xl lg:rounded-2xl bg-sand-dark/10 flex items-center justify-center shrink-0 group-hover:bg-accent group-hover:text-white transition-colors">
-                    {React.cloneElement(pillar.icon as React.ReactElement, { size: 20 })}
+                    {React.cloneElement(pillar.icon as React.ReactElement<{ size: number }>, { size: 20 })}
                   </div>
                   <div>
                     <h4 className="text-lg lg:text-xl font-serif font-bold text-forest group-hover:text-accent transition-colors">{pillar.title}</h4>
@@ -285,7 +285,7 @@ export default function AboutPage() {
                 className="group space-y-6 lg:space-y-8 p-0"
               >
                 <div className={`${val.bg} w-14 lg:w-20 h-14 lg:h-20 rounded-[1.5rem] lg:rounded-[2rem] flex items-center justify-center transition-all group-hover:bg-accent group-hover:text-white`}>
-                   {React.cloneElement(val.icon as React.ReactElement, { size: 24 })}
+                   {React.cloneElement(val.icon as React.ReactElement<{ size: number }>, { size: 24 })}
                 </div>
                 <div className="space-y-2 lg:space-y-4">
                   <h4 className="text-xl lg:text-2xl font-serif font-bold">{val.title}</h4>
