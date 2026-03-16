@@ -45,7 +45,7 @@ const Navbar = () => {
         className={cn(
           "max-w-7xl mx-auto rounded-[2.5rem] transition-all duration-500 border border-white/20",
           scrolled
-            ? "bg-white/70 backdrop-blur-2xl shadow-forest-light/10 shadow-2xl py-3 px-8"
+            ? "bg-white/70 backdrop-blur-xl shadow-forest-light/10 shadow-2xl py-3 px-8"
             : "bg-forest-muted/30 backdrop-blur-md py-5 px-10"
         )}
       >

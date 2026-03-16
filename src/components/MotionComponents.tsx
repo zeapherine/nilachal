@@ -25,16 +25,16 @@ function useInView(options?: IntersectionObserverInit) {
       },
       { 
         threshold: 0.01, 
-        rootMargin: "50px", // Trigger slightly before it enters the viewport
+        rootMargin: "200px", // Trigger much earlier for smoother scroll experience
         ...options 
       }
     );
 
     observer.observe(element);
 
-    // Immediate check as a fallback
+    // Initial check to see if it's already in view
     const rect = element.getBoundingClientRect();
-    if (rect.top < window.innerHeight && rect.bottom > 0) {
+    if (rect.top < window.innerHeight + 200 && rect.bottom > -200) {
       setIsVisible(true);
       observer.unobserve(element);
     }

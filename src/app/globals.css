@@ -152,7 +152,6 @@
 /* Animation utility classes */
 .animate-on-scroll {
   opacity: 0;
-  will-change: opacity, transform;
 }
 
 .animate-on-scroll.is-visible {
@@ -252,7 +251,7 @@
 }
 
 .organic-card {
-  @apply rounded-[3rem] border-0 shadow-2xl bg-white/50 backdrop-blur-xl transition-all duration-500 hover:shadow-forest-light/20;
+  @apply rounded-[3rem] border-0 shadow-2xl bg-white/50 backdrop-blur-md transition-all duration-500 hover:shadow-forest-light/20;
 }
 
 .text-balance {
