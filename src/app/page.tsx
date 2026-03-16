@@ -192,9 +192,11 @@ export default function HomePage() {
                       {dept.description}
                     </p>
                     
-                    <div className="pt-2 lg:pt-4 flex items-center space-x-2 text-[10px] font-bold uppercase tracking-[0.2em] text-accent opacity-60 group-hover:opacity-100 transition-all">
-                      <span>Inquire Department</span>
-                      <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                    <div className="pt-4 lg:pt-6">
+                      <div className="inline-flex items-center justify-between w-full bg-forest text-white px-6 py-3 rounded-full text-[10px] font-black uppercase tracking-widest transition-all shadow-md group-hover:bg-accent group-hover:shadow-xl group-hover:-translate-y-0.5">
+                        <span>Enter Department</span>
+                        <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                      </div>
                     </div>
                   </div>
                 </Link>
