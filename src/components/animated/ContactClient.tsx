@@ -7,7 +7,7 @@ export default function ContactClient() {
   const contactInfo = [
     {
       title: "The Sanctuary",
-      details: ["S.K. Baruah Road, Rukmini Gaon", "Kokrajhar, Assam 783370"],
+      details: ["JD Road", "Kokrajhar, Assam 783370"],
       icon: <MapPin className="w-8 h-8 text-forest-medium" />,
       bg: "bg-forest-muted"
     },
@@ -92,7 +92,7 @@ export default function ContactClient() {
             <div className="absolute -inset-4 bg-forest/5 rounded-[2.5rem] sm:rounded-[4rem] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
             <div className="h-64 sm:h-96 w-full bg-white rounded-[2.5rem] sm:rounded-[4rem] border-4 sm:border-8 border-white overflow-hidden relative shadow-2xl">
                <iframe 
-                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3581.1685!2d91.785!3d26.13!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjbCsDA3JzQ4LjAiTiA5McKwNDcnMDYuMCJF!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin" 
+                 src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d114302.23102782413!2d90.1435089!3d26.4575108!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x37588b00695a4341%3A0xd8aac03b108e773!2sNilachal%20Hospital%20%26%20Research%20Centre!5e0!3m2!1sen!2sin!4v1773678731101!5m2!1sen!2sin" 
                  className="w-full h-full grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-1000"
                  loading="lazy"
                />
