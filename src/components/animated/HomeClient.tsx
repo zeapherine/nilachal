@@ -234,9 +234,14 @@ export default function HomeClient() {
                      {dept.description}
                    </p>
                    
-                   <div className="pt-4 flex items-center space-x-2 text-[10px] font-bold uppercase tracking-[0.2em] text-accent opacity-60 group-hover:opacity-100 transition-all">
-                      <span>Inquire Department</span>
-                      <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                   <div className="pt-6">
+                      <Link 
+                        href="/contact"
+                        className="inline-flex items-center space-x-3 bg-accent/5 hover:bg-accent hover:text-white px-6 py-3 rounded-2xl text-[11px] font-black uppercase tracking-[0.2em] text-accent transition-all duration-300 group/btn shadow-sm"
+                      >
+                         <span>Inquire Department</span>
+                         <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
+                      </Link>
                    </div>
                 </div>
              </motion.div>
