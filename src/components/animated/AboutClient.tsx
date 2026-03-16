@@ -56,6 +56,7 @@ export default function AboutClient() {
                   alt="Dr. S.C. Rabha - The Visionary" 
                   fill 
                   className="object-cover group-hover:scale-105 transition-transform duration-[10s]"
+                  priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-forest/80 via-transparent to-transparent flex items-end p-10">
                   <div className="space-y-2">

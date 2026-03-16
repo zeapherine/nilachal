@@ -63,15 +63,14 @@ export default function GalleryClient() {
           variants={staggerContainer}
           initial="initial"
           whileInView="animate"
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "200px" }}
           className="grid grid-cols-1 md:grid-cols-4 auto-rows-[300px] gap-8"
         >
           {images.map((img, idx) => (
             <motion.div 
               key={idx} 
               variants={bloomIn}
-              whileHover={{ y: -10 }}
-              className={`relative overflow-hidden rounded-[3rem] group cursor-pointer shadow-sm hover:shadow-2xl transition-all duration-700 ${img.span} border border-white/40`}
+              className={`relative overflow-hidden rounded-[3rem] group cursor-pointer shadow-sm ${img.span} border border-white/40`}
             >
               <Image 
                 src={img.src} 
@@ -87,12 +86,6 @@ export default function GalleryClient() {
                    <p className="text-accent font-black text-[10px] uppercase tracking-[0.2em]">{img.category}</p>
                 </div>
                 <h3 className="text-white text-3xl font-serif font-bold italic">{img.title}</h3>
-              </div>
-
-              <div className="absolute top-10 right-10 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                 <div className="w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center text-white">
-                    <Sparkles size={20} />
-                 </div>
               </div>
             </motion.div>
           ))}

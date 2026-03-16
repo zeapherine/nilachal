@@ -155,8 +155,38 @@
 }
 
 .animate-on-scroll.is-visible {
+  opacity: 1;
   animation-fill-mode: forwards;
   animation-timing-function: cubic-bezier(0.21, 0.47, 0.32, 0.98);
+  /* Force acceleration */
+  transform: translateZ(0);
+}
+
+/* Aggressive Mobile Performance Overrides */
+@media (max-width: 768px) {
+  .backdrop-blur-2xl,
+  .backdrop-blur-xl,
+  .backdrop-blur-lg,
+  .backdrop-blur-md {
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+  }
+
+  .animate-pulse {
+    animation: none !important;
+  }
+
+  /* Disable expensive grain on mobile */
+  [class*="bg-[url('/grain.png')]"] {
+    background-image: none !important;
+    display: none !important;
+  }
+
+  /* Simplify soft glows */
+  .soft-glow {
+    filter: blur(40px);
+    opacity: 0.1;
+  }
 }
 
 .animate-on-scroll.is-visible.fade-up {

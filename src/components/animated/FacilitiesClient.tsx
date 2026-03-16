@@ -84,7 +84,7 @@ export default function FacilitiesClient() {
             variants={staggerContainer}
             initial="initial"
             whileInView="animate"
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, margin: "200px" }}
             className={`flex flex-col ${idx % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-20 lg:gap-32 items-center group`}
           >
             <motion.div 
@@ -93,14 +93,12 @@ export default function FacilitiesClient() {
             >
               <div className="absolute -inset-10 bg-forest-light/5 rounded-[5rem] blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-[2s]" />
               <div className="relative aspect-[1.1/1] w-full rounded-[4rem] overflow-hidden shadow-2xl border-8 border-white group-hover:rotate-1 transition-all duration-[2s]">
-                <motion.div variants={depthBloom} className="w-full h-full">
-                  <Image 
-                    src={fac.image} 
-                    alt={fac.title} 
-                    fill 
-                    className="object-cover group-hover:scale-110 transition-transform duration-[15s]"
-                  />
-                </motion.div>
+                <Image 
+                  src={fac.image} 
+                  alt={fac.title} 
+                  fill 
+                  className="object-cover group-hover:scale-110 transition-transform duration-[15s]"
+                />
               </div>
             </motion.div>
             <motion.div 

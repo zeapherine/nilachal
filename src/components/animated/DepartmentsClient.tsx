@@ -94,21 +94,19 @@ export default function DepartmentsClient() {
               variants={staggerContainer}
               initial="initial"
               whileInView="animate"
-              viewport={{ once: true, margin: "-100px" }}
+              viewport={{ once: true, margin: "200px" }}
               className={`flex flex-col ${index % 2 === 1 ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center gap-16 lg:gap-24 group`}
             >
               <motion.div 
                 variants={index % 2 === 0 ? slideInLeft : slideInRight}
                 className="w-full lg:w-1/2 relative aspect-[1.2/1] rounded-[4rem] overflow-hidden shadow-2xl border-8 border-white group-hover:skew-x-1 transition-all duration-[2s]"
               >
-                <motion.div variants={depthBloom} className="w-full h-full">
-                  <Image 
-                    src={dept.image} 
-                    alt={dept.title} 
-                    fill 
-                    className="object-cover group-hover:scale-110 transition-transform duration-[15s]"
-                  />
-                </motion.div>
+                <Image 
+                  src={dept.image} 
+                  alt={dept.title} 
+                  fill 
+                  className="object-cover group-hover:scale-110 transition-transform duration-[15s]"
+                />
                 <div className="absolute inset-0 bg-forest/10 mix-blend-multiply opacity-0 group-hover:opacity-100 transition-opacity" />
               </motion.div>
 

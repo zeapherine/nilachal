@@ -21,15 +21,15 @@ export const bloomIn: Variants = {
 
 /**
  * Depth Bloom: For images, adding a subtle perspective shift.
+ * Mobile Optimization: Removed blur as it causes heavy GPU recalculations.
  */
 export const depthBloom: Variants = {
-  initial: { opacity: 0, scale: 1.1, filter: "blur(10px)" },
+  initial: { opacity: 0, scale: 1.05 },
   animate: { 
     opacity: 1, 
     scale: 1, 
-    filter: "blur(0px)",
     transition: {
-      duration: 1.5,
+      duration: 1.2,
       ease: [0.22, 1, 0.36, 1]
     }
   }

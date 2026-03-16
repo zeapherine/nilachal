@@ -99,7 +99,7 @@ const Navbar = () => {
         {/* Mobile menu */}
         <div
           className={cn(
-            "md:hidden fixed inset-0 top-0 left-0 w-full h-screen bg-white/98 backdrop-blur-3xl z-[-1] flex flex-col items-center justify-center p-8 space-y-6 transition-all duration-700 ease-[cubic-bezier(0.23,1,0.32,1)]",
+            "md:hidden fixed inset-0 top-0 left-0 w-full h-screen bg-white/98 backdrop-blur-xl z-[-1] flex flex-col items-center justify-center p-8 space-y-6 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]",
             isOpen 
               ? "translate-x-0 opacity-100" 
               : "translate-x-full opacity-0 pointer-events-none"
@@ -112,18 +112,17 @@ const Navbar = () => {
                 href={link.href}
                 onClick={() => setIsOpen(false)}
                 className={cn(
-                  "text-3xl font-serif text-forest hover:text-primary transition-all duration-300 transform",
-                  isOpen ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+                  "text-3xl font-serif text-forest hover:text-primary transition-all duration-300",
+                  isOpen ? "opacity-100 scale-100" : "opacity-0 scale-95"
                 )}
-                style={{ transitionDelay: `${idx * 50}ms` }}
               >
                 {link.name}
               </Link>
             ))}
             <div 
               className={cn(
-                "w-full pt-8 transform transition-all duration-500 delay-300",
-                isOpen ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+                "w-full pt-8 transition-all duration-500",
+                isOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
               )}
             >
               <Link

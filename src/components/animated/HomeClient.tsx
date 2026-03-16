@@ -100,7 +100,7 @@ export default function HomeClient() {
             </motion.div>
           </div>
 
-          <motion.div variants={bloomIn} className="lg:col-span-5 relative">
+          <div className="lg:col-span-5 relative">
             <div className="relative aspect-[4/5] rounded-[4rem] overflow-hidden shadow-2xl border-8 border-white group">
               <motion.div variants={depthBloom} className="w-full h-full">
                 <Image
@@ -126,7 +126,7 @@ export default function HomeClient() {
                  <p className="text-xs text-forest/40 uppercase tracking-widest mt-1">Lives touched & restored</p>
               </motion.div>
             </div>
-          </motion.div>
+          </div>
         </motion.div>
       </section>
 
@@ -195,14 +195,12 @@ export default function HomeClient() {
                 {/* Editorial Inset Gallery */}
                 <div className="p-4 w-full">
                   <div className="relative aspect-[16/10] rounded-[2.5rem] overflow-hidden">
-                    <motion.div variants={depthBloom} className="w-full h-full">
-                       <Image 
-                          src={dept.image} 
-                          alt={dept.title} 
-                          fill 
-                          className="object-cover transition-transform duration-[8s] group-hover:scale-105" 
-                       />
-                    </motion.div>
+                     <Image 
+                        src={dept.image} 
+                        alt={dept.title} 
+                        fill 
+                        className="object-cover transition-transform duration-[8s] group-hover:scale-105" 
+                     />
                     
                     {/* Minimal Gradient for Depth */}
                     <div className="absolute inset-0 bg-gradient-to-t from-forest/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
