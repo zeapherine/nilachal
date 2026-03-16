@@ -96,9 +96,20 @@ export default function ContactClient() {
                  className="w-full h-full grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-1000"
                  loading="lazy"
                />
-               <div className="absolute top-4 sm:top-8 left-4 sm:left-8 bg-forest/80 backdrop-blur-md px-4 sm:px-6 py-1.5 sm:py-2 rounded-full text-white text-[9px] sm:text-[10px] font-bold uppercase tracking-widest shadow-lg">
-                  Find our Sanctuary
-               </div>
+                <div className="absolute top-4 sm:top-8 left-4 sm:left-8 flex gap-3">
+                  <div className="bg-forest/80 backdrop-blur-md px-4 sm:px-6 py-1.5 sm:py-2 rounded-full text-white text-[9px] sm:text-[10px] font-bold uppercase tracking-widest shadow-lg">
+                    Find our Sanctuary
+                  </div>
+                  <a 
+                    href="https://maps.app.goo.gl/qtVcg1rgPUxh91DH9" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="bg-accent hover:bg-white hover:text-accent transition-all px-4 sm:px-6 py-1.5 sm:py-2 rounded-full text-white text-[9px] sm:text-[10px] font-bold uppercase tracking-widest shadow-lg flex items-center gap-2 group/btn"
+                  >
+                    <span>Open in Maps</span>
+                    <ArrowRight size={12} className="group-hover/btn:translate-x-1 transition-transform" />
+                  </a>
+                </div>
             </div>
           </FadeIn>
         </div>
