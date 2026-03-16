@@ -237,10 +237,10 @@ export default function HomeClient() {
                    <div className="pt-6">
                       <Link 
                         href="/contact"
-                        className="inline-flex items-center space-x-3 bg-accent/5 hover:bg-accent hover:text-white px-6 py-3 rounded-2xl text-[11px] font-black uppercase tracking-[0.2em] text-accent transition-all duration-300 group/btn shadow-sm"
+                        className="inline-flex items-center justify-between w-full bg-forest hover:bg-accent text-white px-8 py-4 rounded-full text-xs font-black uppercase tracking-widest transition-all duration-300 group/btn shadow-xl hover:-translate-y-1"
                       >
-                         <span>Inquire Department</span>
-                         <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
+                         <span>Enter Department</span>
+                         <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform" />
                       </Link>
                    </div>
                 </div>
