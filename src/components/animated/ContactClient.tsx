@@ -1,6 +1,6 @@
 "use client";
 
-import { MapPin, Phone, Mail, Clock, Send, ShieldCheck, HeartPulse, MessageSquare, Leaf } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Send, ShieldCheck, HeartPulse, MessageSquare, Leaf, ArrowRight } from "lucide-react";
 import { FadeIn, ScaleIn } from "@/components/MotionComponents";
 
 export default function ContactClient() {
