@@ -96,51 +96,54 @@ const Navbar = () => {
           </button>
         </div>
 
-        <div
-          className={cn(
-            "md:hidden fixed inset-0 w-full h-full bg-white z-50 flex flex-col items-center justify-center p-8 space-y-6 transition-transform duration-200 ease-in-out",
-            isOpen 
-              ? "translate-x-0" 
-              : "translate-x-full"
-          )}
+      </nav>
+
+      {/* Mobile menu - Moved outside nav to avoid container constraints */}
+      <div
+        className={cn(
+          "md:hidden fixed inset-0 w-full h-full bg-sand-light z-[100] flex flex-col items-center justify-center p-8 space-y-6 transition-transform duration-300 ease-in-out",
+          isOpen 
+            ? "translate-x-0" 
+            : "translate-x-full"
+        )}
+      >
+        <button
+          className="absolute top-10 right-8 text-forest p-2 hover:bg-forest/5 rounded-full transition-colors"
+          onClick={() => setIsOpen(false)}
         >
-          <button
-            className="absolute top-20 right-8 text-forest p-2"
-            onClick={() => setIsOpen(false)}
-          >
-            <X size={32} />
-          </button>
-          <div className="flex flex-col items-center space-y-8 w-full">
-            {navLinks.map((link, idx) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                onClick={() => setIsOpen(false)}
-                className={cn(
-                  "text-3xl font-serif text-forest hover:text-primary transition-colors duration-200",
-                  isOpen ? "opacity-100 scale-100" : "opacity-0 scale-95"
-                )}
-              >
-                {link.name}
-              </Link>
-            ))}
-            <div 
+          <X size={32} />
+        </button>
+        <div className="flex flex-col items-center space-y-8 w-full">
+          {navLinks.map((link, idx) => (
+            <Link
+              key={link.name}
+              href={link.href}
+              onClick={() => setIsOpen(false)}
               className={cn(
-                "w-full pt-8 transition-opacity duration-300",
-                isOpen ? "opacity-100" : "opacity-0"
+                "text-3xl font-serif text-forest hover:text-primary transition-all duration-300",
+                isOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
               )}
+              style={{ transitionDelay: `${idx * 50}ms` }}
             >
-              <Link
-                href="tel:+911234567890"
-                className="flex items-center justify-center space-x-3 w-full bg-primary text-white py-5 rounded-[2rem] font-bold text-lg shadow-2xl shadow-primary/20"
-              >
-                <Phone size={20} className="animate-pulse" />
-                <span>Call for Help Now</span>
-              </Link>
-            </div>
+              {link.name}
+            </Link>
+          ))}
+          <div 
+            className={cn(
+              "w-full pt-8 transition-all duration-500 delay-300",
+              isOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            )}
+          >
+            <Link
+              href="tel:+911234567890"
+              className="flex items-center justify-center space-x-3 w-full bg-primary text-white py-5 rounded-[2rem] font-bold text-lg shadow-2xl shadow-primary/20 hover:bg-forest transition-colors"
+            >
+              <Phone size={20} className="animate-pulse" />
+              <span>Call for Help Now</span>
+            </Link>
           </div>
         </div>
-      </nav>
+      </div>
     </header>
   );
 };
