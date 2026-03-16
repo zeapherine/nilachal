@@ -1,0 +1,268 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  /* Eco-Healing Brand Colors */
+  --color-forest-muted: #edf1ee;
+  --color-forest-light: #d5ded7;
+  --color-forest-medium: #4a6741;
+  --color-forest: #2d3e26;
+  --color-forest-dark: #1a2517;
+
+  --color-coral-light: #fff1f0;
+  --color-coral: #e67e73;
+  --color-coral-dark: #c25e54;
+
+  --color-sand-light: #fdf8f4;
+  --color-sand: #f5e8d6;
+  --color-sand-dark: #dcd0c0;
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --font-serif: var(--font-serif, "Cormorant Garamond", serif);
+  --font-sans: var(--font-sans, "Inter", sans-serif);
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes accordion-down {
+    from { height: 0; }
+    to { height: var(--radix-accordion-content-height); }
+  }
+  @keyframes accordion-up {
+    from { height: var(--radix-accordion-content-height); }
+    to { height: 0; }
+  }
+}
+
+/* Performance-optimized scroll-driven animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes revealUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Skeleton loading animation */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #edf1ee 25%, #d5ded7 50%, #edf1ee 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 1rem;
+}
+
+/* Animation utility classes */
+.animate-on-scroll {
+  opacity: 0;
+  will-change: opacity, transform;
+}
+
+.animate-on-scroll.is-visible {
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0.21, 0.47, 0.32, 0.98);
+}
+
+.animate-on-scroll.is-visible.fade-up {
+  animation-name: fadeInUp;
+}
+
+.animate-on-scroll.is-visible.fade-down {
+  animation-name: fadeInDown;
+}
+
+.animate-on-scroll.is-visible.fade-left {
+  animation-name: fadeInLeft;
+}
+
+.animate-on-scroll.is-visible.fade-right {
+  animation-name: fadeInRight;
+}
+
+.animate-on-scroll.is-visible.fade-in {
+  animation-name: fadeIn;
+}
+
+.animate-on-scroll.is-visible.scale-in {
+  animation-name: scaleIn;
+}
+
+.animate-on-scroll.is-visible.reveal-up {
+  animation-name: revealUp;
+}
+
+@layer base {
+  :root {
+    --background: 24 33% 97%;
+    --foreground: 120 24% 20%;
+    --card: 24 33% 97%;
+    --card-foreground: 120 24% 20%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 120 24% 20%;
+    --primary: 110 24% 33%;
+    --primary-foreground: 24 33% 97%;
+    --secondary: 35 48% 90%;
+    --secondary-foreground: 120 24% 33%;
+    --muted: 100 8% 94%;
+    --muted-foreground: 120 10% 40%;
+    --accent: 7 70% 68%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 35 20% 85%;
+    --input: 35 20% 85%;
+    --ring: 110 24% 33%;
+    --radius: 2rem;
+  }
+
+  .dark {
+    --background: 120 24% 12%;
+    --foreground: 24 33% 97%;
+    --card: 120 24% 12%;
+    --card-foreground: 24 33% 97%;
+    --popover: 120 24% 10%;
+    --popover-foreground: 24 33% 97%;
+    --primary: 110 24% 40%;
+    --primary-foreground: 24 33% 97%;
+    --secondary: 120 24% 20%;
+    --secondary-foreground: 24 33% 97%;
+    --muted: 120 24% 18%;
+    --muted-foreground: 24 10% 80%;
+    --accent: 7 70% 60%;
+    --accent-foreground: 120 24% 10%;
+    --border: 120 24% 25%;
+    --input: 120 24% 25%;
+    --ring: 110 24% 40%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground transition-colors duration-500;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif tracking-tight leading-tight;
+  }
+}
+
+/* Continuous Narrative Utilities */
+.narrative-overlap {
+  @apply -mt-16 md:-mt-32 relative z-10;
+}
+
+.organic-card {
+  @apply rounded-[3rem] border-0 shadow-2xl bg-white/50 backdrop-blur-xl transition-all duration-500 hover:shadow-forest-light/20;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-br from-forest to-forest-medium;
+}
+
+.soft-glow {
+  @apply absolute -z-10 blur-[100px] opacity-20 pointer-events-none;
+}
