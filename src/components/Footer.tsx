@@ -89,14 +89,17 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Location Map Simulation */}
           <div className="mt-8 lg:mt-0">
-             <div className="w-full h-40 lg:h-48 rounded-[2.5rem] bg-white/5 border border-white/10 p-2 relative group overflow-hidden">
-                <div className="absolute inset-0 bg-forest/40 backdrop-blur-[2px] z-10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                   <Link href="/contact" className="bg-white text-forest px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider">Expand Map</Link>
-                </div>
-                <div className="w-full h-full bg-forest-medium/20 rounded-[2rem] flex items-center justify-center">
-                   <MapPin className="text-accent animate-bounce" size={28} />
+             <div className="w-full h-40 lg:h-48 rounded-[2.5rem] bg-white/5 border border-white/10 p-2 relative group overflow-hidden shadow-2xl">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d114302.23102782413!2d90.1435089!3d26.4575108!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x37588b00695a4341%3A0xd8aac03b108e773!2sNilachal%20Hospital%20%26%20Research%20Centre!5e0!3m2!1sen!2sin!4v1773678731101!5m2!1sen!2sin" 
+                  className="w-full h-full rounded-[2rem] grayscale opacity-30 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 pointer-events-none group-hover:pointer-events-auto"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-forest/20 backdrop-blur-[1px] z-10 flex items-center justify-center opacity-100 group-hover:opacity-0 transition-opacity pointer-events-none">
+                   <div className="bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
+                     <p className="text-white text-[10px] font-bold uppercase tracking-widest">Interactive Map</p>
+                   </div>
                 </div>
              </div>
           </div>
