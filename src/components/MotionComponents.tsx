@@ -1,12 +1,21 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import { useRef, useEffect, useState } from "react";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
-function useInView(options?: IntersectionObserverInit) {
+function useInView(options?: IntersectionObserverInit & { once?: boolean }) {
   const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const isMobile = useIsMobile();
+  const once = options?.once ?? true; // Default to once: true for better performance
 
   useEffect(() => {
+    // Radical Bypass: If mobile, show immediately and skip observer
+    if (isMobile) {
+      setIsVisible(true);
+      return;
+    }
+
     const element = ref.current;
     if (!element) return;
 
@@ -20,12 +29,14 @@ function useInView(options?: IntersectionObserverInit) {
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
-          observer.unobserve(element);
+          if (once) observer.unobserve(element);
+        } else if (!once) {
+          setIsVisible(false);
         }
       },
       { 
         threshold: 0.01, 
-        rootMargin: "200px", // Trigger much earlier for smoother scroll experience
+        rootMargin: "200px", 
         ...options 
       }
     );
@@ -36,11 +47,11 @@ function useInView(options?: IntersectionObserverInit) {
     const rect = element.getBoundingClientRect();
     if (rect.top < window.innerHeight + 200 && rect.bottom > -200) {
       setIsVisible(true);
-      observer.unobserve(element);
+      if (once) observer.unobserve(element);
     }
 
     return () => observer.disconnect();
-  }, [options]);
+  }, [options, isMobile, once]);
 
   return { ref, isVisible };
 }

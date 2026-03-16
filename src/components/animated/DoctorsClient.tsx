@@ -5,8 +5,10 @@ import { Award, Clock, Stethoscope, Sparkles } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { bloomIn, staggerContainer, fadeInSlideUp, scrollReveal, depthBloom } from "@/lib/animations";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 export default function DoctorsClient() {
+  const isMobile = useIsMobile();
   const doctors = [
     {
       name: "Dr. P.K. Rabha",
@@ -63,8 +65,8 @@ export default function DoctorsClient() {
           className="absolute top-0 left-[-5%] w-[40%] h-full bg-forest-light/10 blur-[130px] rounded-full" 
         />
         <motion.div 
-          variants={staggerContainer}
-          initial="initial"
+          variants={isMobile ? undefined : staggerContainer}
+          initial={isMobile ? "animate" : "initial"}
           animate="animate"
           className="max-w-7xl mx-auto relative z-10 space-y-8"
         >
@@ -94,8 +96,8 @@ export default function DoctorsClient() {
       {/* Specialty Filter: The Harmony */}
       <section className="py-12 max-w-7xl mx-auto w-full px-6">
         <motion.div 
-          variants={staggerContainer}
-          initial="initial"
+          variants={isMobile ? undefined : staggerContainer}
+          initial={isMobile ? "animate" : "initial"}
           animate="animate"
           className="flex flex-wrap justify-center gap-4 bg-white/40 backdrop-blur-md p-6 rounded-[3rem] border border-sand-dark/10 shadow-sm"
         >
@@ -115,8 +117,8 @@ export default function DoctorsClient() {
       {/* Stewards Grid: The Connections */}
       <section className="py-20 max-w-7xl mx-auto px-6 w-full">
         <motion.div 
-          variants={staggerContainer}
-          initial="initial"
+          variants={isMobile ? undefined : staggerContainer}
+          initial={isMobile ? "animate" : "initial"}
           whileInView="animate"
           viewport={{ once: true }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-16 lg:gap-24"
@@ -128,7 +130,7 @@ export default function DoctorsClient() {
               className="group flex flex-col sm:flex-row bg-white/60 backdrop-blur-xl rounded-[4rem] overflow-hidden border border-sand-dark/10 shadow-sm hover:shadow-2xl transition-all duration-700 hover:translate-y-[-10px]"
             >
               <div className="relative w-full sm:w-2/5 aspect-[4/5] sm:aspect-auto overflow-hidden">
-                <motion.div variants={depthBloom} className="w-full h-full">
+                <motion.div variants={isMobile ? undefined : depthBloom} className="w-full h-full">
                   <Image 
                     src={dr.image} 
                     alt={dr.name} 
@@ -206,8 +208,8 @@ export default function DoctorsClient() {
       {/* Stewardship CTA */}
       <section className="py-32 px-6">
          <motion.div 
-           variants={scrollReveal}
-           initial="initial"
+           variants={isMobile ? undefined : scrollReveal}
+           initial={isMobile ? "animate" : "initial"}
            whileInView="animate"
            viewport={{ once: true }}
            className="max-w-6xl mx-auto rounded-[5rem] bg-forest-muted p-16 md:p-32 text-center relative overflow-hidden group"

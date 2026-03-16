@@ -5,8 +5,10 @@ import Link from "next/link";
 import { Camera, MapPin, ArrowRight, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import { bloomIn, staggerContainer, fadeInSlideUp, scrollReveal } from "@/lib/animations";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 export default function GalleryClient() {
+  const isMobile = useIsMobile();
   const images = [
     { src: "/facility_exterior.png", title: "The Sanctuary Exterior", category: "Infrastructure", span: "row-span-2 col-span-2" },
     { src: "/facility_ot.png", title: "Sterile Precision", category: "Operations", span: "row-span-1 col-span-1" },
@@ -29,8 +31,8 @@ export default function GalleryClient() {
           className="absolute top-0 left-[-10%] w-[50%] h-full bg-forest-light/10 blur-[150px] rounded-full" 
         />
         <motion.div 
-          variants={staggerContainer}
-          initial="initial"
+          variants={isMobile ? undefined : staggerContainer}
+          initial={isMobile ? "animate" : "initial"}
           animate="animate"
           className="max-w-7xl mx-auto relative z-10 text-center space-y-8"
         >
@@ -57,11 +59,10 @@ export default function GalleryClient() {
         </motion.div>
       </section>
 
-      {/* Gallery: The Organic Grid */}
       <section className="py-20 max-w-7xl mx-auto px-6 w-full">
         <motion.div 
-          variants={staggerContainer}
-          initial="initial"
+          variants={isMobile ? undefined : staggerContainer}
+          initial={isMobile ? "animate" : "initial"}
           whileInView="animate"
           viewport={{ once: true, margin: "200px" }}
           className="grid grid-cols-1 md:grid-cols-4 auto-rows-[300px] gap-8"
@@ -92,11 +93,10 @@ export default function GalleryClient() {
         </motion.div>
       </section>
 
-      {/* Narrative CTA: The Invitation */}
       <section className="py-40 px-6 relative overflow-hidden">
         <motion.div 
-          variants={scrollReveal}
-          initial="initial"
+          variants={isMobile ? undefined : scrollReveal}
+          initial={isMobile ? "animate" : "initial"}
           whileInView="animate"
           viewport={{ once: true }}
           className="max-w-5xl mx-auto relative z-10"

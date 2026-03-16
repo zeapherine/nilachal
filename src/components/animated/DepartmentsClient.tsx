@@ -5,8 +5,10 @@ import Link from "next/link";
 import { ArrowRight, Activity, Baby, HeartPulse, Sparkles, ShieldCheck, Microscope, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { bloomIn, staggerContainer, fadeInSlideUp, scrollReveal, slideInLeft, slideInRight, depthBloom } from "@/lib/animations";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 export default function DepartmentsClient() {
+  const isMobile = useIsMobile();
   const departments = [
     {
       title: "Mother & Child Sanctuary",
@@ -57,8 +59,8 @@ export default function DepartmentsClient() {
           className="absolute top-0 right-[-5%] w-[40%] h-full bg-forest-light/10 blur-[130px] rounded-full" 
         />
         <motion.div 
-          variants={staggerContainer}
-          initial="initial"
+          variants={isMobile ? undefined : staggerContainer}
+          initial={isMobile ? "animate" : "initial"}
           animate="animate"
           className="max-w-7xl mx-auto relative z-10 text-center space-y-8"
         >
@@ -91,8 +93,8 @@ export default function DepartmentsClient() {
           {departments.map((dept, index) => (
             <motion.div 
               key={index} 
-              variants={staggerContainer}
-              initial="initial"
+              variants={isMobile ? undefined : staggerContainer}
+              initial={isMobile ? "animate" : "initial"}
               whileInView="animate"
               viewport={{ once: true, margin: "200px" }}
               className={`flex flex-col ${index % 2 === 1 ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center gap-16 lg:gap-24 group`}
@@ -161,11 +163,10 @@ export default function DepartmentsClient() {
         </div>
       </section>
 
-      {/* Narrative Call: The Consultation */}
       <section className="px-6 py-40">
         <motion.div 
-          variants={scrollReveal}
-          initial="initial"
+          variants={isMobile ? undefined : scrollReveal}
+          initial={isMobile ? "animate" : "initial"}
           whileInView="animate"
           viewport={{ once: true }}
           className="max-w-6xl mx-auto rounded-[5rem] bg-accent text-white p-16 md:p-32 text-center relative overflow-hidden group"

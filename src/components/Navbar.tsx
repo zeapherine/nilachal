@@ -40,7 +40,7 @@ const Navbar = () => {
   ];
 
   return (
-    <header className="fixed top-0 w-full z-50 px-4 pt-6 transition-all duration-500">
+    <header className="fixed top-0 md:top-0 w-full z-50 px-4 pt-14 md:pt-6 transition-all duration-500">
       <nav
         className={cn(
           "max-w-7xl mx-auto rounded-[2.5rem] transition-all duration-500 border border-white/20",
@@ -96,15 +96,20 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Mobile menu */}
         <div
           className={cn(
-            "md:hidden fixed inset-0 top-0 left-0 w-full h-screen bg-white/98 backdrop-blur-xl z-[-1] flex flex-col items-center justify-center p-8 space-y-6 transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]",
+            "md:hidden fixed inset-0 w-full h-full bg-white z-50 flex flex-col items-center justify-center p-8 space-y-6 transition-transform duration-200 ease-in-out",
             isOpen 
-              ? "translate-x-0 opacity-100" 
-              : "translate-x-full opacity-0 pointer-events-none"
+              ? "translate-x-0" 
+              : "translate-x-full"
           )}
         >
+          <button
+            className="absolute top-20 right-8 text-forest p-2"
+            onClick={() => setIsOpen(false)}
+          >
+            <X size={32} />
+          </button>
           <div className="flex flex-col items-center space-y-8 w-full">
             {navLinks.map((link, idx) => (
               <Link
@@ -112,7 +117,7 @@ const Navbar = () => {
                 href={link.href}
                 onClick={() => setIsOpen(false)}
                 className={cn(
-                  "text-3xl font-serif text-forest hover:text-primary transition-all duration-300",
+                  "text-3xl font-serif text-forest hover:text-primary transition-colors duration-200",
                   isOpen ? "opacity-100 scale-100" : "opacity-0 scale-95"
                 )}
               >
@@ -121,8 +126,8 @@ const Navbar = () => {
             ))}
             <div 
               className={cn(
-                "w-full pt-8 transition-all duration-500",
-                isOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                "w-full pt-8 transition-opacity duration-300",
+                isOpen ? "opacity-100" : "opacity-0"
               )}
             >
               <Link

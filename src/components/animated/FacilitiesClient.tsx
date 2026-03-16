@@ -5,8 +5,10 @@ import Link from "next/link";
 import { CheckCircle2, Shield, Zap, Heart, ArrowRight, Building2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { bloomIn, staggerContainer, fadeInSlideUp, slideInLeft, slideInRight, scrollReveal, depthBloom } from "@/lib/animations";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 export default function FacilitiesClient() {
+  const isMobile = useIsMobile();
   const facilities = [
     {
       title: "Laminar Flow Surgical Sanctuaries",
@@ -48,8 +50,8 @@ export default function FacilitiesClient() {
           className="absolute top-0 right-[-10%] w-[50%] h-full bg-forest-light/10 blur-[150px] rounded-full" 
         />
         <motion.div 
-          variants={staggerContainer}
-          initial="initial"
+          variants={isMobile ? undefined : staggerContainer}
+          initial={isMobile ? "animate" : "initial"}
           animate="animate"
           className="max-w-7xl mx-auto relative z-10 text-center space-y-8"
         >
@@ -81,8 +83,8 @@ export default function FacilitiesClient() {
         {facilities.map((fac, idx) => (
           <motion.div 
             key={idx} 
-            variants={staggerContainer}
-            initial="initial"
+            variants={isMobile ? undefined : staggerContainer}
+            initial={isMobile ? "animate" : "initial"}
             whileInView="animate"
             viewport={{ once: true, margin: "200px" }}
             className={`flex flex-col ${idx % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-20 lg:gap-32 items-center group`}
@@ -160,11 +162,10 @@ export default function FacilitiesClient() {
         ))}
       </section>
 
-      {/* Narrative Trust: The Vow */}
       <section className="px-6 py-40">
          <motion.div 
-           variants={staggerContainer}
-           initial="initial"
+           variants={isMobile ? undefined : staggerContainer}
+           initial={isMobile ? "animate" : "initial"}
            whileInView="animate"
            viewport={{ once: true }}
            className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16"

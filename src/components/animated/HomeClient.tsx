@@ -6,7 +6,10 @@ import { ArrowRight, Activity, Heart, Stethoscope, ChevronRight, Sprout, Phone, 
 import { motion } from "framer-motion";
 import { bloomIn, staggerContainer, fadeInSlideUp, hoverScale, scrollReveal, magneticScale, depthBloom, slideInLeft } from "@/lib/animations";
 
+import { useIsMobile } from "@/hooks/useIsMobile";
+
 export default function HomeClient() {
+  const isMobile = useIsMobile();
   const departments = [
     { 
       title: "Maternity & NICU", 
@@ -39,45 +42,50 @@ export default function HomeClient() {
       {/* Narrative Hero: The Invitation */}
       <section className="relative min-h-[95vh] w-full flex items-center pt-32 pb-20 overflow-hidden">
         {/* Organic Background Elements */}
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 2, ease: "easeOut" }}
-          className="absolute top-20 right-[-10%] w-[60%] h-[80%] bg-forest-light/20 rounded-full blur-[120px] -rotate-12 animate-pulse" 
-        />
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 2, delay: 0.5, ease: "easeOut" }}
-          className="absolute bottom-0 left-[-5%] w-[40%] h-[50%] bg-coral-light/30 rounded-full blur-[100px]" 
-        />
+        {!isMobile && (
+          <>
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 2, ease: "easeOut" }}
+              className="absolute top-20 right-[-10%] w-[60%] h-[80%] bg-forest-light/20 rounded-full blur-[120px] -rotate-12 animate-pulse" 
+            />
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 2, delay: 0.5, ease: "easeOut" }}
+              className="absolute bottom-0 left-[-5%] w-[40%] h-[50%] bg-coral-light/30 rounded-full blur-[100px]" 
+            />
+          </>
+        )}
         
         <motion.div 
-          variants={staggerContainer}
-          initial="initial"
-          animate="animate"
+          variants={isMobile ? undefined : staggerContainer}
+          initial={isMobile ? "animate" : "initial"}
+          whileInView="animate"
+          viewport={{ once: true }}
           className="max-w-7xl mx-auto px-6 lg:px-8 w-full grid grid-cols-1 lg:grid-cols-12 gap-16 items-center relative z-10"
         >
           <div className="lg:col-span-7 space-y-10">
             <motion.div 
-              variants={bloomIn}
+              variants={isMobile ? undefined : bloomIn}
               className="inline-flex items-center space-x-3 bg-white/50 backdrop-blur-md border border-forest-light/30 px-5 py-2.5 rounded-full text-forest-medium text-xs font-bold uppercase tracking-widest shadow-sm"
             >
               <Sprout size={14} className="text-forest" />
               <span>A Sanctuary for Healing & Hope</span>
             </motion.div>
             
-            <motion.h1 variants={fadeInSlideUp} className="text-6xl md:text-8xl font-serif font-black text-forest leading-[0.95] tracking-tight text-balance">
+            <motion.h1 variants={isMobile ? undefined : fadeInSlideUp} className="text-6xl md:text-8xl font-serif font-black text-forest leading-[0.95] tracking-tight text-balance">
               Where <span className="text-accent underline decoration-coral-light/50 decoration-8 underline-offset-8">Care</span> Feels Like <br />
               <span className="italic font-normal serif">Coming Home.</span>
             </motion.h1>
             
-            <motion.p variants={fadeInSlideUp} className="text-xl md:text-2xl text-forest/70 font-sans leading-relaxed max-w-xl text-balance">
+            <motion.p variants={isMobile ? undefined : fadeInSlideUp} className="text-xl md:text-2xl text-forest/70 font-sans leading-relaxed max-w-xl text-balance">
               Nilachal Hospital & Research Centre is more than a facility; it&apos;s a compassionate ecosystem designed for your complete recovery.
             </motion.p>
             
-            <motion.div variants={fadeInSlideUp} className="flex flex-wrap gap-6 pt-4">
-              <motion.div variants={magneticScale} whileHover="hover" whileTap="tap">
+            <motion.div variants={isMobile ? undefined : fadeInSlideUp} className="flex flex-wrap gap-6 pt-4">
+              <motion.div variants={isMobile ? undefined : magneticScale} whileHover="hover" whileTap="tap">
                 <Link 
                   href="/contact" 
                   className="bg-primary hover:bg-forest text-white px-10 py-5 rounded-[2rem] font-bold text-lg flex items-center space-x-3 transition-all hover:shadow-[0_20px_50px_rgba(45,62,38,0.2)] hover:-translate-y-1"
@@ -86,7 +94,7 @@ export default function HomeClient() {
                   <ArrowRight size={20} />
                 </Link>
               </motion.div>
-              <motion.div variants={hoverScale} whileHover="hover" whileTap="tap">
+              <motion.div variants={isMobile ? undefined : hoverScale} whileHover="hover" whileTap="tap">
                 <Link 
                   href="/about" 
                   className="group flex items-center space-x-4 text-forest font-bold text-lg hover:text-primary transition-colors"
@@ -100,13 +108,17 @@ export default function HomeClient() {
             </motion.div>
           </div>
 
+          {/* Hero Image / Visual Narrative */}
           <div className="lg:col-span-5 relative">
-            <div className="relative aspect-[4/5] rounded-[4rem] overflow-hidden shadow-2xl border-8 border-white group">
-              <motion.div variants={depthBloom} className="w-full h-full">
-                <Image
-                  src="/hospital_hero_background_1773413303358.png"
-                  alt="Compassionate Care at Nilachal"
-                  fill
+            <div className="relative aspect-[4/5] rounded-[4rem] overflow-hidden shadow-2xl group border-[12px] border-white/50 backdrop-blur-sm">
+              <motion.div 
+                variants={isMobile ? undefined : depthBloom}
+                className="w-full h-full"
+              >
+                <Image 
+                  src="/hospital_hero_new.png" 
+                  alt="Nilachal Healing Sanctuary" 
+                  fill 
                   className="object-cover transition-transform duration-[15s] group-hover:scale-110"
                   priority
                 />
@@ -130,11 +142,10 @@ export default function HomeClient() {
         </motion.div>
       </section>
 
-      {/* Narrative Section: The Philosophy */}
       <section className="py-32 px-6 relative overflow-hidden">
         <motion.div 
-          variants={scrollReveal}
-          initial="initial"
+          variants={isMobile ? undefined : scrollReveal}
+          initial={isMobile ? "animate" : "initial"}
           whileInView="animate"
           viewport={{ once: true }}
           className="max-w-4xl mx-auto text-center space-y-12 relative z-10"
@@ -163,13 +174,12 @@ export default function HomeClient() {
         </motion.div>
       </section>
 
-      {/* Narrative Section: The Departments Overlay */}
       <section className="py-20 px-6 max-w-7xl mx-auto w-full relative">
         <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-forest-medium/5 rounded-full blur-[100px]" />
         
         <motion.div 
-          variants={staggerContainer}
-          initial="initial"
+          variants={isMobile ? undefined : staggerContainer}
+          initial={isMobile ? "animate" : "initial"}
           whileInView="animate"
           viewport={{ once: true }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
@@ -234,11 +244,10 @@ export default function HomeClient() {
         </motion.div>
       </section>
 
-      {/* Narrative Section: Facilities Preview */}
       <section className="py-32 px-6 max-w-7xl mx-auto w-full relative overflow-hidden">
         <motion.div 
-          variants={staggerContainer}
-          initial="initial"
+          variants={isMobile ? undefined : staggerContainer}
+          initial={isMobile ? "animate" : "initial"}
           whileInView="animate"
           viewport={{ once: true }}
           className="space-y-20"
@@ -281,11 +290,10 @@ export default function HomeClient() {
         </motion.div>
       </section>
 
-      {/* Narrative Section: Doctors Preview */}
       <section className="py-32 px-6 bg-forest-muted/30 rounded-[5rem] mx-6">
         <motion.div 
-          variants={staggerContainer}
-          initial="initial"
+          variants={isMobile ? undefined : staggerContainer}
+          initial={isMobile ? "animate" : "initial"}
           whileInView="animate"
           viewport={{ once: true }}
           className="max-w-7xl mx-auto space-y-20"
@@ -331,11 +339,10 @@ export default function HomeClient() {
         </motion.div>
       </section>
 
-      {/* Narrative Section: Gallery Preview */}
       <section className="py-32 px-6 max-w-7xl mx-auto w-full">
         <motion.div 
-          variants={staggerContainer}
-          initial="initial"
+          variants={isMobile ? undefined : staggerContainer}
+          initial={isMobile ? "animate" : "initial"}
           whileInView="animate"
           viewport={{ once: true }}
           className="space-y-12"
@@ -372,11 +379,10 @@ export default function HomeClient() {
         </motion.div>
       </section>
 
-      {/* Mandatory Section: The Features/Services Grid */}
       <section className="py-20 px-6">
         <motion.div 
-          variants={staggerContainer}
-          initial="initial"
+          variants={isMobile ? undefined : staggerContainer}
+          initial={isMobile ? "animate" : "initial"}
           whileInView="animate"
           viewport={{ once: true }}
           className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8"
@@ -444,8 +450,8 @@ export default function HomeClient() {
             </motion.div>
 
             <motion.div 
-              variants={staggerContainer}
-              initial="initial"
+              variants={isMobile ? undefined : staggerContainer}
+              initial={isMobile ? "animate" : "initial"}
               whileInView="animate"
               viewport={{ once: true }}
               className="space-y-12"
@@ -498,8 +504,8 @@ export default function HomeClient() {
            <div className="absolute top-0 left-0 w-64 h-64 bg-primary/10 rounded-full blur-[100px]" />
            
            <motion.div 
-             variants={staggerContainer}
-             initial="initial"
+             variants={isMobile ? undefined : staggerContainer}
+             initial={isMobile ? "animate" : "initial"}
              whileInView="animate"
              viewport={{ once: true }}
              className="relative z-10 max-w-2xl mx-auto space-y-12"

@@ -4,8 +4,10 @@ import Image from "next/image";
 import { Shield, Target, Users, Heart, Award, ArrowRight, Sprout, Sparkles, Quote, Leaf, Clock, Microscope, Activity, Compass, Globe, Flower2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { bloomIn, staggerContainer, fadeInSlideUp, hoverScale, scrollReveal, depthBloom } from "@/lib/animations";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 export default function AboutClient() {
+  const isMobile = useIsMobile();
   const values = [
     { title: "Patient Sanctuary", desc: "Creating a safe, calming ecosystem where the soul heals alongside the body.", icon: <Heart className="text-coral" />, bg: "bg-coral-light" },
     { title: "Living Innovation", desc: "Constant evolution of medical science, rooted in the wisdom of patient-centric care.", icon: <Sprout className="text-forest-medium" />, bg: "bg-forest-muted" },
@@ -67,10 +69,9 @@ export default function AboutClient() {
               </motion.div>
             </motion.div>
 
-            {/* Right: The Vision Message */}
             <motion.div 
-              variants={staggerContainer}
-              initial="initial"
+              variants={isMobile ? undefined : staggerContainer}
+              initial={isMobile ? "animate" : "initial"}
               animate="animate"
               className="lg:col-span-7 space-y-10"
             >
@@ -106,11 +107,10 @@ export default function AboutClient() {
         </div>
       </section>
 
-      {/* Clinical Pillars: Advanced Specialization */}
       <section className="py-32 max-w-7xl mx-auto px-6">
         <motion.div 
-          variants={staggerContainer}
-          initial="initial"
+          variants={isMobile ? undefined : staggerContainer}
+          initial={isMobile ? "animate" : "initial"}
           whileInView="animate"
           viewport={{ once: true }}
           className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center"
@@ -261,12 +261,11 @@ export default function AboutClient() {
         </div>
       </section>
 
-      {/* The Odyssey: Chronological Timeline */}
       <section className="py-32 bg-sand-dark/5 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <motion.div 
-            variants={staggerContainer}
-            initial="initial"
+            variants={isMobile ? undefined : staggerContainer}
+            initial={isMobile ? "animate" : "initial"}
             whileInView="animate"
             viewport={{ once: true }}
             className="text-center mb-24"
@@ -343,8 +342,8 @@ export default function AboutClient() {
         
         <div className="max-w-7xl mx-auto px-10 relative z-10">
           <motion.div 
-            variants={scrollReveal}
-            initial="initial"
+            variants={isMobile ? undefined : scrollReveal}
+            initial={isMobile ? "animate" : "initial"}
             whileInView="animate"
             viewport={{ once: true }}
             className="text-center mb-24 space-y-4"
@@ -355,8 +354,8 @@ export default function AboutClient() {
           </motion.div>
           
           <motion.div 
-            variants={staggerContainer}
-            initial="initial"
+            variants={isMobile ? undefined : staggerContainer}
+            initial={isMobile ? "animate" : "initial"}
             whileInView="animate"
             viewport={{ once: true }}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12"
@@ -383,11 +382,10 @@ export default function AboutClient() {
         </div>
       </section>
 
-      {/* Leadership: The Stewards */}
       <section className="py-24 max-w-7xl mx-auto px-6 w-full">
         <motion.div 
-          variants={staggerContainer}
-          initial="initial"
+          variants={isMobile ? undefined : staggerContainer}
+          initial={isMobile ? "animate" : "initial"}
           whileInView="animate"
           viewport={{ once: true }}
           className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8"
@@ -400,8 +398,8 @@ export default function AboutClient() {
         </motion.div>
 
         <motion.div 
-          variants={staggerContainer}
-          initial="initial"
+          variants={isMobile ? undefined : staggerContainer}
+          initial={isMobile ? "animate" : "initial"}
           whileInView="animate"
           viewport={{ once: true }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12"
@@ -446,8 +444,8 @@ export default function AboutClient() {
         <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <motion.div 
-              variants={staggerContainer}
-              initial="initial"
+              variants={isMobile ? undefined : staggerContainer}
+              initial={isMobile ? "animate" : "initial"}
               whileInView="animate"
               viewport={{ once: true }}
               className="space-y-8"
@@ -520,8 +518,8 @@ export default function AboutClient() {
         >
           <Sparkles className="absolute top-10 right-10 text-accent/20 w-32 h-32 animate-pulse" />
           <motion.div 
-            variants={staggerContainer}
-            initial="initial"
+            variants={isMobile ? undefined : staggerContainer}
+            initial={isMobile ? "animate" : "initial"}
             whileInView="animate"
             viewport={{ once: true }}
             className="grid grid-cols-1 md:grid-cols-3 gap-16 text-center"

@@ -3,6 +3,7 @@ import { Inter, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import EmergencyHeader from "@/components/EmergencyHeader";
 import { GoogleAnalytics } from '@next/third-parties/google';
 import JsonLd from "@/components/JsonLd";
 
@@ -30,6 +31,7 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${cormorant.variable}`}>
       <body className={inter.className} suppressHydrationWarning>
         <JsonLd />
+        <EmergencyHeader />
         <Navbar />
         <div className="relative overflow-x-hidden">
           <main className="min-h-screen">
