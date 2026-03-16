@@ -101,46 +101,49 @@ const Navbar = () => {
       {/* Mobile menu - Moved outside nav to avoid container constraints */}
       <div
         className={cn(
-          "md:hidden fixed inset-0 w-full h-full bg-sand-light z-[100] flex flex-col items-center justify-center p-8 space-y-6 transition-transform duration-300 ease-in-out",
+          "md:hidden fixed inset-0 w-full h-full bg-sand-light z-[100] flex flex-col transition-transform duration-300 ease-in-out",
           isOpen 
             ? "translate-x-0" 
             : "translate-x-full"
         )}
       >
         <button
-          className="absolute top-10 right-8 text-forest p-2 hover:bg-forest/5 rounded-full transition-colors"
+          className="absolute top-6 right-8 text-forest p-2 hover:bg-forest/5 rounded-full transition-colors z-[110]"
           onClick={() => setIsOpen(false)}
         >
           <X size={32} />
         </button>
-        <div className="flex flex-col items-center space-y-8 w-full">
-          {navLinks.map((link, idx) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              onClick={() => setIsOpen(false)}
+        
+        <div className="flex-1 overflow-y-auto w-full px-8 py-24 flex flex-col items-center justify-start space-y-6">
+          <div className="flex flex-col items-center space-y-6 w-full">
+            {navLinks.map((link, idx) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                onClick={() => setIsOpen(false)}
+                className={cn(
+                  "text-3xl font-serif text-forest hover:text-primary transition-all duration-300",
+                  isOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                )}
+                style={{ transitionDelay: `${idx * 40}ms` }}
+              >
+                {link.name}
+              </Link>
+            ))}
+            <div 
               className={cn(
-                "text-3xl font-serif text-forest hover:text-primary transition-all duration-300",
+                "w-full pt-6 transition-all duration-500 delay-300",
                 isOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
               )}
-              style={{ transitionDelay: `${idx * 50}ms` }}
             >
-              {link.name}
-            </Link>
-          ))}
-          <div 
-            className={cn(
-              "w-full pt-8 transition-all duration-500 delay-300",
-              isOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-            )}
-          >
-            <Link
-              href="tel:+911234567890"
-              className="flex items-center justify-center space-x-3 w-full bg-primary text-white py-5 rounded-[2rem] font-bold text-lg shadow-2xl shadow-primary/20 hover:bg-forest transition-colors"
-            >
-              <Phone size={20} className="animate-pulse" />
-              <span>Call for Help Now</span>
-            </Link>
+              <Link
+                href="tel:+911234567890"
+                className="flex items-center justify-center space-x-3 w-full bg-primary text-white py-5 rounded-[2rem] font-bold text-lg shadow-2xl shadow-primary/20 hover:bg-forest transition-colors"
+              >
+                <Phone size={20} className="animate-pulse" />
+                <span>Call for Help Now</span>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
