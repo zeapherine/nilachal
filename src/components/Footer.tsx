@@ -96,12 +96,17 @@ export default function Footer() {
                   className="w-full h-full rounded-[2rem] grayscale opacity-30 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 pointer-events-none group-hover:pointer-events-auto"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-forest/20 backdrop-blur-[1px] z-10 flex flex-col items-center justify-center gap-3 opacity-100 group-hover:opacity-0 transition-opacity pointer-events-none">
+                <a 
+                  href="https://maps.app.goo.gl/qtVcg1rgPUxh91DH9" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="absolute inset-0 bg-forest/20 backdrop-blur-[1px] z-10 flex flex-col items-center justify-center gap-3 opacity-100 group-hover:opacity-0 transition-opacity"
+                >
                    <div className="bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
                      <p className="text-white text-[10px] font-bold uppercase tracking-widest">Interactive Map</p>
                    </div>
-                </div>
-                <div className="absolute bottom-4 right-4 z-20 opacity-0 group-hover:opacity-100 transition-opacity translate-y-4 group-hover:translate-y-0 duration-300">
+                </a>
+                <div className="absolute bottom-4 right-4 z-20 opacity-0 group-hover:opacity-100 transition-opacity translate-y-4 group-hover:translate-y-0 duration-300 pointer-events-none group-hover:pointer-events-auto">
                    <a 
                      href="https://maps.app.goo.gl/qtVcg1rgPUxh91DH9" 
                      target="_blank" 
